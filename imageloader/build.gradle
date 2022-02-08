@@ -1,0 +1,34 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+}
+
+def glide = "4.12.0"
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.2"
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+
+    //Glide
+    api "com.github.bumptech.glide:glide:${glide}"
+    //注解编译支持库
+    kapt "com.github.bumptech.glide:compiler:${glide}"
+    //glide webp转码库-高斯模糊
+    api "jp.wasabeef:glide-transformations:3.1.0"
+    //glide webp转码库-webp
+    api "com.zlc.glide:webpdecoder:2.0.${glide}"
+
+//    "4.12.0"
+//    api rootProject.ext.dependencies["glide"]
+//    //glide webp转码库-webp
+//    api rootProject.ext.dependencies["glide-webpdecoder"]
+//    //glide webp转码库-高斯模糊
+//    api rootProject.ext.dependencies['glide-transformations']
+//    //注解编译支持库
+//    kapt rootProject.ext.dependencies["glide-compiler"]
+}
