@@ -9,6 +9,9 @@ def glide = "4.12.0"
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
+
+    versionCode 1
+    versionName "1.0"
 }
 
 dependencies {
