@@ -85,6 +85,6 @@ interface IImageLoader {
 
 <br />
 
-**注：虽然方法是kotlin写的，但是都添加了@JvmOverloads注解，所以java也可以像kotlin一样，需要几个参数就传几个就行**
+**注：虽然方法是kotlin写的，但是都添加了@JvmOverloads注解生成了java多参方法，所以java也可以像kotlin一样，需要几个参数就传几个就行**
 
 <br />
