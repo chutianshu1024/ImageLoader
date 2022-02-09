@@ -2,17 +2,24 @@
 
 **一个图片加载库，实现常用的图片加载相关功能。
 使用kotlin编写，添加了扩展函数，kotlin使用更酸爽。
-现在加载策略用的是Glide，可自行扩展。（喜欢的可以Star一下，或者感兴趣的大家一起维护。 =.=。）**
+现在加载策略用的是Glide，可自行扩展。（喜欢的可以Star一下，或者感兴趣的大家一起维护。 =.=。）**  
 
+<br /><br />
 
+## 效果图
 
-## 支持功能
-1.Glide常规支持内容（加载本地图片、网络图片等）
-2.圆角，圆形图片
-3.动态webp
-4.高斯模糊
-5.其他
+![效果图](www.baidu.com)
 
+<br />
+
+## 支持功能  
+1.Glide常规支持内容（加载本地图片、网络图片等）  
+2.圆角，圆形图片  
+3.动态webp  
+4.高斯模糊  
+5.其他    
+
+<br />
 
 ## 主要功能及参数
 核心功能和参数：
@@ -37,9 +44,10 @@ interface IImageLoader {
     fun getDrawable(context: Context, url: String, iDrawableTarget: IDrawableTarget<Drawable>)
 }
 ```
+<br />
 
 ## 使用
-### kotlin扩展函数使用方法（推荐）
+### 1.kotlin扩展函数使用方法（推荐）
 
 ```
 
@@ -60,12 +68,13 @@ interface IImageLoader {
         
 ```
 
+<br />
 
-### 通用调用方法，java和kotlin皆可
+### 2.通用调用方法，java和kotlin皆可
 
 ``` 
 		//通用用法，跟上面基本一样，只不过要把imageview传进去，不赘述
-        	ImageLoader().loadUrl(imageview , "图片url")
+        ImageLoader().loadUrl(imageview , "图片url")
 		
 		ImageLoader().loadCircle(imageview , ...)
 		
@@ -74,5 +83,8 @@ interface IImageLoader {
 		ImageLoader().loadWebP(imageview , ...)
 ```
 
+<br />
 
 方法添加了@JvmOverloads注解，所以java也可以像kotlin一样，需要几个参数就传几个就行
+
+<br />
