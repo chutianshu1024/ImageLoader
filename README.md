@@ -21,6 +21,27 @@
 
 <br />
 
+## 导入方式
+项目根目录build.gradle添加
+``` javascript
+	allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+
+```
+
+项目的build.gradle添加
+``` javascript
+	dependencies {
+	        implementation 'com.github.chutianshu1024:ImageLoader:1.2'
+	}
+```
+
+<br />
+
 ## 主要功能及参数
 核心功能和参数：
 ``` javascript
