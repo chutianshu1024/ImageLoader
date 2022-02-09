@@ -8,7 +8,7 @@
 
 ## 效果图
 
-![效果图](www.baidu.com)
+![效果图](https://github.com/chutianshu1024/ImageLoader/blob/master/gif/SVID_20220209_104550_1.gif)
 
 <br />
 
