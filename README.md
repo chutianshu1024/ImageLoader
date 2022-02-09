@@ -74,7 +74,7 @@ interface IImageLoader {
 
 ``` 
 		//通用用法，跟上面基本一样，只不过要把imageview传进去，不赘述
-        ImageLoader().loadUrl(imageview , "图片url")
+        	ImageLoader().loadUrl(imageview , "图片url")
 		
 		ImageLoader().loadCircle(imageview , ...)
 		
