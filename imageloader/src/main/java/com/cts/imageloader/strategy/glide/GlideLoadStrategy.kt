@@ -7,6 +7,7 @@ import android.net.Uri
 import android.util.Log
 import android.widget.ImageView
 import androidx.annotation.RawRes
+import com.bumptech.glide.Glide
 import com.bumptech.glide.integration.webp.decoder.WebpDrawable
 import com.bumptech.glide.integration.webp.decoder.WebpDrawableTransformation
 import com.bumptech.glide.load.DataSource
@@ -44,7 +45,7 @@ class GlideLoadStrategy : IImageLoader {
         }
 
         if (any == null) {//加载默认图片
-            GlideApp.with(imageView.context)
+            Glide.with(imageView.context)
                 .load(R.drawable.sdkc_shape_placeholder_rec_rad3)
                 .into(imageView)
             Log.e("ImageLoader-error", "图片路径为null")
@@ -55,25 +56,25 @@ class GlideLoadStrategy : IImageLoader {
             when (any) {//遗留问题，RawRes判断异常，暂时直接加载
                 is String -> {
                     //！！！！！注意注意注意注意，这里imageView.context不要改成imageView，会出很多奇奇怪怪的SIGABRT异常！！！！！！
-                    GlideApp.with(imageView.context).load(any)
+                    Glide.with(imageView.context).load(any)
                 }
                 is File -> {
-                    GlideApp.with(imageView.context).load(any)
+                    Glide.with(imageView.context).load(any)
                 }
                 is Drawable -> {
-                    GlideApp.with(imageView.context).load(any)
+                    Glide.with(imageView.context).load(any)
                 }
                 is RawRes -> {
-                    GlideApp.with(imageView.context).load(any)
+                    Glide.with(imageView.context).load(any)
                 }
                 is Uri -> {
-                    GlideApp.with(imageView.context).load(any)
+                    Glide.with(imageView.context).load(any)
                 }
                 is Bitmap -> {
-                    GlideApp.with(imageView.context).load(any)
+                    Glide.with(imageView.context).load(any)
                 }
                 else -> {
-                    GlideApp.with(imageView.context).load(any)
+                    Glide.with(imageView.context).load(any)
                     //遗留问题，RawRes判断异常，暂时直接加载
                     //                Logger.d("不支持的类型")
                     //                null
@@ -238,7 +239,7 @@ class GlideLoadStrategy : IImageLoader {
         iDrawableTarget: IDrawableTarget<Drawable>
     ) {
         try {
-            GlideApp.with(context)
+            Glide.with(context)
                 .asDrawable()
                 .load(url)
                 .into(object : CustomTarget<Drawable>() {
