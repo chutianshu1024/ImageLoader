@@ -1,7 +1,7 @@
 # ImageLoader
 
-**一个图片加载库，实现常用的图片加载相关功能。
-使用kotlin编写，添加了扩展函数，kotlin使用更酸爽。
+**一个简洁易用的图片加载库，基本满足所有常用的图片加载相关功能。  
+使用kotlin编写，添加了扩展函数，kotlin使用更酸爽。  
 现在加载策略用的是Glide，可自行扩展。（喜欢的可以Star一下，或者感兴趣的大家一起维护。 =.=。）**  
 
 <br /><br />
@@ -12,12 +12,38 @@
 
 <br />
 
+## 详细讲解
+编写中...
+
+<br />
+
 ## 支持功能  
 1、Glide常规支持内容（加载本地图片、网络图片等）  
 2、圆角，圆形图片  
 3、动态webp  
 4、高斯模糊  
 5、其他    
+
+<br />
+
+## 导入方式
+项目根目录build.gradle添加
+``` javascript
+	allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+
+```
+
+项目的build.gradle添加
+``` javascript
+	dependencies {
+	        implementation 'com.github.chutianshu1024:ImageLoader:1.2'
+	}
+```
 
 <br />
 
