@@ -1,19 +1,19 @@
-//package com.cts.imageloader.strategy.glide
-//
-//import android.content.Context
-//import com.bumptech.glide.GlideBuilder
-//import com.bumptech.glide.annotation.GlideModule
-//import com.bumptech.glide.module.AppGlideModule
-//
-///**
-// * @Description: glide全局配置
-// * @Author: CTS
-// * @Date: 2020/12/22 15:04
-// * @Note: Glide4.11.0支持加载http和https，所以证书信任策略不用再设置了
-// *        而且这里缓存相关也并没有配置，只是预留一下
-// */
-//@GlideModule
-//class GlideModelConfig : AppGlideModule() {
+package com.cts.imageloader.strategy.glide
+
+import com.bumptech.glide.annotation.GlideModule
+import com.bumptech.glide.module.AppGlideModule
+
+/**
+ * @Description: glide全局配置
+ * @Author: CTS
+ * @Date: 2020/12/22 15:04
+ * @Note: Glide4.11.0支持加载http和https，所以证书信任策略不用再设置了
+ *        而且这里缓存相关也并没有配置，只是预留一下
+ *        如果自定义的话添加：
+ *        @Excludes({com.cts.imageloader.strategy.glide.GlideModule})
+ */
+@GlideModule
+class GlideModelConfig : AppGlideModule() {
 //    // 图片缓存最大容量，150M，根据自己的需求进行修改
 //    val GLIDE_CATCH_SIZE = 350 * 1000 * 1000
 //
@@ -43,4 +43,4 @@
 ////        builder.setDecodeFormat(DecodeFormat.PREFER_ARGB_8888)
 ////        builder.setDecodeFormat(DecodeFormat.PREFER_RGB_565) // 默认
 //    }
-//}
+}

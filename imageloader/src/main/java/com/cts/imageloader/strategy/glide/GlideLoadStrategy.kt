@@ -45,7 +45,7 @@ class GlideLoadStrategy : IImageLoader {
         }
 
         if (any == null) {//加载默认图片
-            Glide.with(imageView.context)
+            GlideApp.with(imageView.context)
                 .load(R.drawable.sdkc_shape_placeholder_rec_rad3)
                 .into(imageView)
             Log.e("ImageLoader-error", "图片路径为null")
@@ -56,25 +56,25 @@ class GlideLoadStrategy : IImageLoader {
             when (any) {//遗留问题，RawRes判断异常，暂时直接加载
                 is String -> {
                     //！！！！！注意注意注意注意，这里imageView.context不要改成imageView，会出很多奇奇怪怪的SIGABRT异常！！！！！！
-                    Glide.with(imageView.context).load(any)
+                    GlideApp.with(imageView.context).load(any)
                 }
                 is File -> {
-                    Glide.with(imageView.context).load(any)
+                    GlideApp.with(imageView.context).load(any)
                 }
                 is Drawable -> {
-                    Glide.with(imageView.context).load(any)
+                    GlideApp.with(imageView.context).load(any)
                 }
                 is RawRes -> {
-                    Glide.with(imageView.context).load(any)
+                    GlideApp.with(imageView.context).load(any)
                 }
                 is Uri -> {
-                    Glide.with(imageView.context).load(any)
+                    GlideApp.with(imageView.context).load(any)
                 }
                 is Bitmap -> {
-                    Glide.with(imageView.context).load(any)
+                    GlideApp.with(imageView.context).load(any)
                 }
                 else -> {
-                    Glide.with(imageView.context).load(any)
+                    GlideApp.with(imageView.context).load(any)
                     //遗留问题，RawRes判断异常，暂时直接加载
                     //                Logger.d("不支持的类型")
                     //                null
@@ -239,7 +239,7 @@ class GlideLoadStrategy : IImageLoader {
         iDrawableTarget: IDrawableTarget<Drawable>
     ) {
         try {
-            Glide.with(context)
+            GlideApp.with(context)
                 .asDrawable()
                 .load(url)
                 .into(object : CustomTarget<Drawable>() {
