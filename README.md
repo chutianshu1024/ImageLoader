@@ -41,7 +41,7 @@
 项目的build.gradle添加
 ``` javascript
 	dependencies {
-	        implementation 'com.github.chutianshu1024:ImageLoader:1.2'
+	        implementation 'com.github.chutianshu1024:ImageLoader:1.4'
 	}
 ```
 
