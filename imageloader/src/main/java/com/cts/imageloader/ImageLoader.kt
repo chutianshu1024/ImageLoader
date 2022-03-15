@@ -96,7 +96,7 @@ class ImageLoader(loadStrategy: LoadStrategy = LoadStrategy.GLIDE) {
         placeholder: Int? = null,//占位图资源id
         errorResId: Int? = R.drawable.sdkc_shape_placeholder_rec_rad3,//失败图片资源id
         cacheType: CacheType? = CacheType.LOCAL2MEMORY,//缓存方式
-        scaleType: ScaleType? = ScaleType.CIRCLE_CROP,//显示范围类型，默认CENTER_CROP
+        scaleType: ScaleType? = ScaleType.CENTER_CROP,//显示范围类型，默认CENTER_CROP
     ) {
         iImageLoader.load(
             imageView = iv, any = url, loopCount = loopCount, thumbnail = thumbnail,
