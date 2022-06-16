@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId "com.cts.imageloader"
-        minSdkVersion 19
+        minSdkVersion 21
         targetSdkVersion 31
         versionCode 1
         versionName "1.0"
@@ -38,6 +38,6 @@ dependencies {
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.0'
 
-    implementation 'com.github.chutianshu1024:ImageLoader:1.2'
-//    implementation project(':imageloader')
+//    implementation 'com.github.chutianshu1024:ImageLoader:1.8'
+    implementation project(':imageloader')
 }

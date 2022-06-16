@@ -16,7 +16,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         //扩展函数，参数可选，用到哪个加哪个
-        findViewById<ImageView>(R.id.iv1).loadUrl("https://alifei04.cfp.cn/creative/vcg/800/new/VCG41N1348844060.jpg")
+//        findViewById<ImageView>(R.id.iv1).loadUrl("https://alifei04.cfp.cn/creative/vcg/800/new/VCG41N1348844060.jpg")
+        findViewById<ImageView>(R.id.iv1).loadUrl("https://isparta.github.io/compare-webp/image/png_webp/webp_lossless/4.webp")
         findViewById<ImageView>(R.id.iv2).loadCircle("https://alifei04.cfp.cn/creative/vcg/800/new/VCG41N1348844060.jpg")
         findViewById<ImageView>(R.id.iv3).loadRoundedCorner(
             "https://alifei04.cfp.cn/creative/vcg/800/new/VCG41N1348844060.jpg",
