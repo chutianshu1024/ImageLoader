@@ -3,6 +3,9 @@ package com.cts.demo
 import android.os.Bundle
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.DefaultImageHeaderParser
+import com.bumptech.glide.request.RequestOptions
 import com.cts.imageloader.ImageLoader
 import com.cts.imageloader.ScaleType
 import com.cts.imageloader.ext.loadCircle
@@ -10,14 +13,26 @@ import com.cts.imageloader.ext.loadRoundedCorner
 import com.cts.imageloader.ext.loadUrl
 import com.cts.imageloader.ext.loadWebP
 
+
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+//        http://static.melo-development.svc.cluster.local/imgs/images/bag/8001.webp
+//        var url = "http://static.melo-development.svc.cluster.local/imgs/images/bag/8001.webp"
+        var url = "https://p.upyun.com/demo/webp/webp/gif-0.webp"
+
         //扩展函数，参数可选，用到哪个加哪个
 //        findViewById<ImageView>(R.id.iv1).loadUrl("https://alifei04.cfp.cn/creative/vcg/800/new/VCG41N1348844060.jpg")
-        findViewById<ImageView>(R.id.iv1).loadUrl("https://isparta.github.io/compare-webp/image/png_webp/webp_lossless/4.webp")
+//        findViewById<ImageView>(R.id.iv1).loadUrl("https://isparta.github.io/compare-webp/image/png_webp/webp_lossless/4.webp")
+//        findViewById<ImageView>(R.id.iv1).loadUrl(url)
+        Glide.with(this@MainActivity)
+            .asDrawable()
+            .load(url)
+            .apply(RequestOptions().centerCrop())
+            .into(findViewById(R.id.iv1))
+
         findViewById<ImageView>(R.id.iv2).loadCircle("https://alifei04.cfp.cn/creative/vcg/800/new/VCG41N1348844060.jpg")
         findViewById<ImageView>(R.id.iv3).loadRoundedCorner(
             "https://alifei04.cfp.cn/creative/vcg/800/new/VCG41N1348844060.jpg",

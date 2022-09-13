@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <base-config cleartextTrafficPermitted="true">
+        <trust-anchors>  <!-- 信任锚点集合 -->
+            <certificates src="system" />  <!-- 信任系统自带的证书 -->
+            <certificates src="user" />  <!-- 信任用户导入的证书 -->
+        </trust-anchors>
+    </base-config>
+</network-security-config>

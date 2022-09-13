@@ -11,6 +11,9 @@ import com.cts.imageloader.ScaleType
  * @Author: CTS
  * @Date: 2020/12/22 18:44
  */
+//因为加载策略其实一个app内都不会再变了，所以直接用一个ImageLoader也可以
+var imageLoader = ImageLoader()
+
 inline fun ImageView.loadUrl(
     url: Any?,
     thumbnail: Float? = null,
@@ -20,7 +23,7 @@ inline fun ImageView.loadUrl(
     scaleType: ScaleType? = ScaleType.CENTER_CROP,//显示范围类型，默认CENTER_CROP
     blurSampling: Int? = 0,//高斯模糊数值，默认为0表示不添加高斯模糊
 ) {
-    ImageLoader().loadUrl(
+    imageLoader.loadUrl(
         this,
         url,
         thumbnail = thumbnail,
@@ -41,7 +44,7 @@ inline fun ImageView.loadRoundedCorner(
     scaleType: ScaleType? = ScaleType.CENTER_CROP,//显示范围类型，默认CENTER_CROP
     blurSampling: Int? = 0,//高斯模糊数值，默认为0表示不添加高斯模糊
 ) {
-    ImageLoader().loadRoundedCorner(
+    imageLoader.loadRoundedCorner(
         this, url, roundedCorners = roundedCorners,
         thumbnail = thumbnail, placeholder = placeholder, errorResId = errorResId,
         cacheType = cacheType, scaleType = scaleType, blurSampling = blurSampling
@@ -57,7 +60,7 @@ inline fun ImageView.loadCircle(
     scaleType: ScaleType? = ScaleType.CIRCLE_CROP,//显示范围类型，默认CENTER_CROP
     blurSampling: Int? = 0,//高斯模糊数值，默认为0表示不添加高斯模糊
 ) {
-    ImageLoader().loadCircle(
+    imageLoader.loadCircle(
         this, url, thumbnail = thumbnail,
         placeholder = placeholder, errorResId = errorResId,
         cacheType = cacheType, scaleType = scaleType, blurSampling = blurSampling
@@ -73,7 +76,7 @@ inline fun ImageView.loadWebP(
     cacheType: CacheType? = CacheType.LOCAL2MEMORY,//缓存方式
     scaleType: ScaleType? = ScaleType.CENTER_CROP,//显示范围类型，默认CENTER_CROP
 ) {
-    ImageLoader().loadWebP(
+    imageLoader.loadWebP(
         this, url, loopCount = loopCount, thumbnail = thumbnail, roundedCorners = roundedCorners,
         placeholder = placeholder, errorResId = errorResId, cacheType = cacheType,
         scaleType = scaleType
