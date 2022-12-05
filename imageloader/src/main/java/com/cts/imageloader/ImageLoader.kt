@@ -73,7 +73,7 @@ class ImageLoader(loadStrategy: LoadStrategy = LoadStrategy.GLIDE) {
     fun loadCircle(
         iv: ImageView, url: String?, thumbnail: Float? = null,
         placeholder: Int? = null,//占位图资源id
-        errorResId: Int? = R.drawable.sdkc_shape_placeholder_rec_rad3,//失败图片资源id
+        errorResId: Int? = R.drawable.sdkc_shape_placeholder_circle,//失败图片资源id
         cacheType: CacheType? = CacheType.LOCAL2MEMORY,//缓存方式
         scaleType: ScaleType? = ScaleType.CIRCLE_CROP,//显示范围类型，默认CENTER_CROP
         blurSampling: Int? = 0,//高斯模糊数值，默认为0表示不添加高斯模糊
