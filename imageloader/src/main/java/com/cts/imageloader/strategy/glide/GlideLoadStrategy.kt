@@ -46,7 +46,7 @@ class GlideLoadStrategy : IImageLoader {
 
         if (any == null) {//加载默认图片
             Glide.with(imageView.context)
-                .load(R.drawable.sdkc_shape_placeholder_rec_rad3)
+                .load(errorResId)
                 .into(imageView)
             Log.e("ImageLoader-error", "图片路径为null")
             return

@@ -67,5 +67,11 @@ class MainActivity : AppCompatActivity() {
             findViewById(R.id.iv8),
             "https://alifei04.cfp.cn/creative/vcg/800/new/VCG41N1348844060.jpg"
         )
+
+        //圆形图
+        ImageLoader().loadCircle(
+            findViewById(R.id.iv10),
+            "https://alife0.jpg"
+        )
     }
 }
