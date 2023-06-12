@@ -58,28 +58,31 @@ class GlideLoadStrategy : IImageLoader {
                     //！！！！！注意注意注意注意，这里imageView.context不要改成imageView，会出很多奇奇怪怪的SIGABRT异常！！！！！！
                     Glide.with(imageView.context).load(any)
                 }
+
                 is File -> {
                     Glide.with(imageView.context).load(any)
                 }
+
                 is Drawable -> {
                     Glide.with(imageView.context).load(any)
                 }
+
                 is RawRes -> {
                     Glide.with(imageView.context).load(any)
                 }
+
                 is Uri -> {
                     Glide.with(imageView.context).load(any)
                 }
+
                 is Bitmap -> {
                     Glide.with(imageView.context).load(any)
                 }
+
                 else -> {
                     Glide.with(imageView.context).load(any)
-                    //遗留问题，RawRes判断异常，暂时直接加载
-                    //                Logger.d("不支持的类型")
-                    //                null
                 }
-            }?.apply {
+            }.apply {
                 //缩略图
                 if (thumbnail != null) {
                     thumbnail(thumbnail)
@@ -101,10 +104,12 @@ class GlideLoadStrategy : IImageLoader {
                         skipMemoryCache(true)
                         diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
                     }
+
                     CacheType.MEMORY_ONLY -> {//仅内存缓存
                         skipMemoryCache(false)
                         diskCacheStrategy(DiskCacheStrategy.NONE)
                     }
+
                     CacheType.LOCAL2MEMORY -> {//内存和本地都缓存
                         skipMemoryCache(false)
                         diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
@@ -112,7 +117,18 @@ class GlideLoadStrategy : IImageLoader {
                 }
 
                 //格式不同，需要设置不同转码器（并且如果需要圆角之类的效果的话需要在转码器上进行配置，单独配置无效）
-                when (format) {
+                var formatTemp = if (format == Format.IMAGE) {
+                    if (!any.toString().contains(".webp")) {
+                        Format.IMAGE
+                    } else {
+                        Format.WEBP
+                    }
+                } else if (format == Format.WEBP) {
+                    Format.WEBP
+                } else {
+                    Format.IMAGE
+                }
+                when (formatTemp) {
                     Format.IMAGE -> {
                         if (blurSampling ?: 0 > 0) {//高斯模糊
                             //圆角
@@ -164,6 +180,7 @@ class GlideLoadStrategy : IImageLoader {
                             }
                         }
                     }
+
                     Format.WEBP -> {
                         //如果直接用glide内置的Transformation，则不能设置ScaleType和圆角，抽时间研究下
                         val multiTransformation: Transformation<Bitmap> =
@@ -187,9 +204,6 @@ class GlideLoadStrategy : IImageLoader {
                             WebpDrawable::class.java,
                             WebpDrawableTransformation(multiTransformation)
                         )
-                    }
-                    else -> {
-                        Log.e("ImageLoader-error", "不支持的格式")
                     }
                 }
 
@@ -264,15 +278,19 @@ class GlideLoadStrategy : IImageLoader {
         ScaleType.CENTER_CROP -> {
             CenterCrop()
         }
+
         ScaleType.CENTER_INSIDE -> {
             CenterInside()
         }
+
         ScaleType.CIRCLE_CROP -> {
             CircleCrop()
         }
+
         ScaleType.FIT_CENTER -> {
             FitCenter()
         }
+
         else -> {
             CenterCrop()
         }

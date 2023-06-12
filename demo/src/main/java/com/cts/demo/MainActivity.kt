@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity() {
         findViewById<ImageView>(R.id.iv4).loadWebP(R.drawable.animate, roundedCorners = 200)
 
         //网络动态webp，添加圆角，添加CENTER_CROP
-        findViewById<ImageView>(R.id.iv5).loadWebP(
+        findViewById<ImageView>(R.id.iv5).loadRoundedCorner(
             "https://raw.githubusercontent.com/qq2225936589/ImageDemos/master/demo01.webp",
             roundedCorners = 20,
             scaleType = ScaleType.CENTER_CROP
@@ -73,5 +73,17 @@ class MainActivity : AppCompatActivity() {
             findViewById(R.id.iv10),
             "https://alife0.jpg"
         )
+
+        //测试bug
+        ImageLoader().loadUrl(
+            findViewById(R.id.iv11),
+            "http://giftimg.txxtxx.cn/images/2e387b545b112ada230d687dadf285d7.webp"
+        )
+        findViewById<ImageView>(R.id.iv11).setOnClickListener {
+            ImageLoader().loadUrl(
+                findViewById(R.id.iv11),
+                "http://giftimg.txxtxx.cn/images/1761d2aaed339a883e7060e16ed85d21.webp"
+            )
+        }
     }
 }

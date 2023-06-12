@@ -4,15 +4,15 @@ plugins {
     id 'kotlin-kapt'
 }
 
-def glide = "4.13.2"
+def glide = "4.14.2"
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion 31
     buildToolsVersion "30.0.2"
 
     defaultConfig {
         minSdkVersion 21
-        targetSdkVersion 30
+        targetSdkVersion 31
         versionCode 1
         versionName "1.0"
     }
@@ -28,5 +28,5 @@ dependencies {
     //glide webp转码库-高斯模糊
     api "jp.wasabeef:glide-transformations:4.3.0"
     //glide webp转码库-webp
-    api "com.github.zjupure:webpdecoder:2.0.${glide}"
+    api "com.github.zjupure:webpdecoder:2.3.${glide}"
 }

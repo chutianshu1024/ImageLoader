@@ -8,13 +8,12 @@ android {
     buildToolsVersion "30.0.2"
 
     defaultConfig {
-        applicationId "com.cts.imageloader"
+        applicationId "com.cts.imageloader2"
         minSdkVersion 21
         targetSdkVersion 31
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "1.1"
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
