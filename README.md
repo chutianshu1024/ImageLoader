@@ -86,7 +86,7 @@ interface IImageLoader {
 		//加载圆角图片（本地图/网络图皆可，路径、圆角度数必传，其他参数可选）
 		imageview.loadRoundedCorner(...)
 		
-		//加载动态webp，可设置播放循环次数（本地图/网络图皆可，路径必传，其他参数可选）
+		//加载动态webp，可设置播放循环次数（本地图/网络图皆可，路径必传，其他参数可选），webp也可以不用这个api，直接调用上面三个也可以（不过前提是文件后缀是.webp，如果不是的话还是要用这个api）
 		imageview.loadWebP(...)
 		
 		//高斯模糊，上面方法除了loadWebP()之外都支持配置高斯模糊，例如：
@@ -106,6 +106,7 @@ interface IImageLoader {
 		
 		ImageLoader().loadRoundedCorner(imageview , ...)
 		
+		//webp也可以不用这个api，直接调用上面三个也可以（不过前提是文件后缀是.webp，如果不是的话还是要用这个api）
 		ImageLoader().loadWebP(imageview , ...)
 ```
 
