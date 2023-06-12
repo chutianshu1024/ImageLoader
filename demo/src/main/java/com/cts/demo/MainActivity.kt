@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
             .into(findViewById(R.id.iv1))
 
         findViewById<ImageView>(R.id.iv2).loadCircle("https://alifei04.cfp.cn/creative/vcg/800/new/VCG41N1348844060.jpg")
-        findViewById<ImageView>(R.id.iv3).loadRoundedCorner(
+        findViewById<ImageView>(R.id.iv3).loadWebP(
             "https://alifei04.cfp.cn/creative/vcg/800/new/VCG41N1348844060.jpg",
             20
         )
@@ -79,11 +79,5 @@ class MainActivity : AppCompatActivity() {
             findViewById(R.id.iv11),
             "http://giftimg.txxtxx.cn/images/2e387b545b112ada230d687dadf285d7.webp"
         )
-        findViewById<ImageView>(R.id.iv11).setOnClickListener {
-            ImageLoader().loadUrl(
-                findViewById(R.id.iv11),
-                "http://giftimg.txxtxx.cn/images/1761d2aaed339a883e7060e16ed85d21.webp"
-            )
-        }
     }
 }
