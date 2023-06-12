@@ -20,7 +20,7 @@
 ## 支持功能  
 1、Glide常规支持内容（加载本地图片、网络图片等）  
 2、圆角，圆形图片  
-3、动态webp  
+3、动态webp（动态webp支持：圆角、对齐方式CenterCrop和CenterInside等）  
 4、高斯模糊  
 5、其他    
 
