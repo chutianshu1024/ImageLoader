@@ -23,20 +23,26 @@ class MainActivity : AppCompatActivity() {
 //        var url = "http://static.melo-development.svc.cluster.local/imgs/images/bag/8001.webp"
         var url = "https://p.upyun.com/demo/webp/webp/gif-0.webp"
 
+        var urlImg =
+            "https://raw.githubusercontent.com/chutianshu1024/ImageLoader/master/gif/karl-bewick-OuwIYzmmz0Y-unsplash.jpg"
+
         //扩展函数，参数可选，用到哪个加哪个
 //        findViewById<ImageView>(R.id.iv1).loadUrl("https://alifei04.cfp.cn/creative/vcg/800/new/VCG41N1348844060.jpg")
 //        findViewById<ImageView>(R.id.iv1).loadUrl("https://isparta.github.io/compare-webp/image/png_webp/webp_lossless/4.webp")
 //        findViewById<ImageView>(R.id.iv1).loadUrl(url)
-        Glide.with(this@MainActivity)
-            .asDrawable()
-            .load(url)
-            .apply(RequestOptions().centerCrop())
-            .into(findViewById(R.id.iv1))
 
-        findViewById<ImageView>(R.id.iv2).loadCircle("https://alifei04.cfp.cn/creative/vcg/800/new/VCG41N1348844060.jpg")
+//        Glide.with(this@MainActivity)
+//            .asDrawable()
+//            .load(url)
+//            .apply(RequestOptions().centerCrop())
+//            .into(findViewById(R.id.iv1))
+
+        findViewById<ImageView>(R.id.iv1).loadUrl(url)
+
+        findViewById<ImageView>(R.id.iv2).loadCircle(urlImg)
+
         findViewById<ImageView>(R.id.iv3).loadWebP(
-            "https://alifei04.cfp.cn/creative/vcg/800/new/VCG41N1348844060.jpg",
-            20
+            urlImg, 20
         )
         //本地动态webp
         findViewById<ImageView>(R.id.iv4).loadWebP(R.drawable.animate, roundedCorners = 200)
@@ -58,26 +64,22 @@ class MainActivity : AppCompatActivity() {
 
         //高斯模糊，（能不用就别用，贼耗性能）
         findViewById<ImageView>(R.id.iv7).loadUrl(
-            "https://alifei04.cfp.cn/creative/vcg/800/new/VCG41N1348844060.jpg",
-            blurSampling = 2
+            urlImg, blurSampling = 2
         )
 
         //普通用法，跟上面基本一样，java也用这种调用方式
         ImageLoader().loadUrl(
-            findViewById(R.id.iv8),
-            "https://alifei04.cfp.cn/creative/vcg/800/new/VCG41N1348844060.jpg"
+            findViewById(R.id.iv8), urlImg
         )
 
         //圆形图
         ImageLoader().loadCircle(
-            findViewById(R.id.iv10),
-            "https://alife0.jpg"
+            findViewById(R.id.iv9), urlImg
         )
 
         //测试bug
-        ImageLoader().loadUrl(
-            findViewById(R.id.iv11),
-            "http://giftimg.txxtxx.cn/images/2e387b545b112ada230d687dadf285d7.webp"
+        ImageLoader().loadRoundedCorner(
+            findViewById(R.id.iv10), url, 20
         )
     }
 }

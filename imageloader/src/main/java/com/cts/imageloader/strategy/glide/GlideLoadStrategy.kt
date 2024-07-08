@@ -1,5 +1,6 @@
 package com.cts.imageloader.strategy.glide
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
@@ -23,7 +24,6 @@ import com.bumptech.glide.request.target.Target
 import com.bumptech.glide.request.transition.Transition
 import com.cts.imageloader.*
 import jp.wasabeef.glide.transformations.BlurTransformation
-import jp.wasabeef.glide.transformations.RoundedCornersTransformation
 import java.io.File
 
 /**
@@ -33,6 +33,7 @@ import java.io.File
  */
 class GlideLoadStrategy : IImageLoader {
 
+    @SuppressLint("CheckResult")
     override fun load(
         imageView: ImageView, any: Any?, thumbnail: Float?,
         roundedCorners: Int?, placeholder: Int?, errorResId: Int?,
@@ -56,7 +57,7 @@ class GlideLoadStrategy : IImageLoader {
             when (any) {//遗留问题，RawRes判断异常，暂时直接加载
                 is String -> {
                     //！！！！！注意注意注意注意，这里imageView.context不要改成imageView，会出很多奇奇怪怪的SIGABRT异常！！！！！！
-                    Glide.with(imageView.context).load(any)
+                    Glide.with(imageView.context).asDrawable().load(any)
                 }
 
                 is File -> {
@@ -111,6 +112,11 @@ class GlideLoadStrategy : IImageLoader {
                     }
 
                     CacheType.LOCAL2MEMORY -> {//内存和本地都缓存
+                        skipMemoryCache(false)
+                        diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
+                    }
+
+                    else -> {
                         skipMemoryCache(false)
                         diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
                     }
@@ -199,44 +205,46 @@ class GlideLoadStrategy : IImageLoader {
                                 MultiTransformation(getScaleType(scaleType))
                             }
 
-                        //设置转码器
+                        optionalTransform(multiTransformation)
                         optionalTransform(
                             WebpDrawable::class.java,
                             WebpDrawableTransformation(multiTransformation)
                         )
-                    }
-                }
 
-                if (loopCount ?: 0 > 0) {
-                    addListener(object : RequestListener<Drawable> {
-                        override fun onLoadFailed(
-                            e: GlideException?,
-                            model: Any?,
-                            target: Target<Drawable>?,
-                            isFirstResource: Boolean
-                        ): Boolean {
-                            return false
-                        }
+                        //web重复次数
+                        if (loopCount ?: 0 > 0) {
+                            addListener(object : RequestListener<Drawable> {
+                                override fun onLoadFailed(
+                                    e: GlideException?,
+                                    model: Any?,
+                                    target: Target<Drawable>,
+                                    isFirstResource: Boolean
+                                ): Boolean {
+                                    return false
+                                }
 
-                        override fun onResourceReady(
-                            resource: Drawable?,
-                            model: Any?,
-                            target: Target<Drawable>?,
-                            dataSource: DataSource?,
-                            isFirstResource: Boolean
-                        ): Boolean {
-                            val webp = resource as WebpDrawable
-                            webp.loopCount = loopCount ?: 1
-                            webp.setVisible(true, true)
-                            return false
-                        }
+                                override fun onResourceReady(
+                                    resource: Drawable,
+                                    model: Any,
+                                    target: Target<Drawable>?,
+                                    dataSource: DataSource,
+                                    isFirstResource: Boolean
+                                ): Boolean {
+                                    if (resource is WebpDrawable) {
+                                        resource.loopCount = loopCount ?: 1
+                                        resource.setVisible(true, true)
+                                    }
+                                    return false
+                                }
 
-                    })
+                            })
 
 //                    //如果需要重复播放，一般要移除内存缓存，否则第二次不会重新播放
 //                    skipMemoryCache(true)
-                } else {
+                        } else {
 
+                        }
+                    }
                 }
 
             }?.into(imageView)
